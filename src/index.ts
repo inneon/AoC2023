@@ -1,11 +1,12 @@
 import { runFunctionWithInput } from "./input-fetcher"
-import { placeholder } from "./day01/day01"
+import { getCalibration, getCalibrationWithWords } from "./day01/day01"
 import * as dotenv from "dotenv"
 
 dotenv.config()
 
 const run = async () => {
-  console.log(await runFunctionWithInput("1", placeholder))
+  console.log(await runFunctionWithInput("1", getCalibration))
+  console.log(await runFunctionWithInput("1", getCalibrationWithWords))
 }
 
 run()
