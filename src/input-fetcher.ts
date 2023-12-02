@@ -3,7 +3,11 @@ import { AoCFunction } from "./helpers/aocFunction"
 import fs from "fs"
 
 const getInput = async (day: string, cookie: string): Promise<string> => {
-  const localFileName = `./src/inputs/day${day}.txt`
+  const inputDirectory = "./inputs"
+  const localFileName = `${inputDirectory}/day${day}.txt`
+  if (!fs.existsSync(inputDirectory)) {
+    fs.mkdirSync(inputDirectory)
+  }
   if (fs.existsSync(localFileName)) {
     return fs.readFileSync(localFileName, "utf-8")
   }
