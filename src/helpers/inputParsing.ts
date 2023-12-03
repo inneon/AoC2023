@@ -11,3 +11,6 @@ export const toSplitLines = (input: string): string[][] =>
   )
 
 export const toLines = (input: string): string[] => input.split("\n")
+
+export const splitToGrid = (input: string): string[][] =>
+  input.split("\n").map((line) => line.split(""))

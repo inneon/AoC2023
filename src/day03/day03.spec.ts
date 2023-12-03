@@ -1,0 +1,33 @@
+import { sumGearRatios, sumPartNumbers } from "./day03"
+
+describe("day 3", () => {
+  it("should add up all the part numbers in the example", () => {
+    const example = `467..114..
+...*......
+..35..633.
+......#...
+617*......
+.....+.58.
+..592.....
+......755.
+...$.*....
+.664.598..`
+
+    expect(sumPartNumbers(example)).toBe(4361)
+  })
+
+  it("should add up all the gear ratios", () => {
+    const example = `467..114..
+...*......
+..35..633.
+......#...
+617*......
+.....+.58.
+..592.....
+......755.
+...$.*....
+.664.598..`
+
+    expect(sumGearRatios(example)).toBe(467835)
+  })
+})
