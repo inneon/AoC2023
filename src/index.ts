@@ -1,12 +1,13 @@
 import { runFunctionWithInput } from "./input-fetcher"
+import * as dotenv from "dotenv"
 import { getCalibration, getCalibrationWithWords } from "./day01/day01"
 import { getPossibleGames, getPowersForGames } from "./day02/day02"
-import * as dotenv from "dotenv"
 import { sumGearRatios, sumPartNumbers } from "./day03/day03"
 import {
   getScratchCardTotal,
   getScratchCardTotalWithCorrectRules,
 } from "./day04/day04"
+import { findClosestLocation } from "./day05/day05"
 
 dotenv.config()
 
@@ -25,6 +26,8 @@ const run = async () => {
   console.log(
     await runFunctionWithInput("4", getScratchCardTotalWithCorrectRules),
   )
+  console.log("day 05")
+  console.log(await runFunctionWithInput("5", findClosestLocation))
 }
 
 run()
