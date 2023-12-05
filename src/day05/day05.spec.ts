@@ -1,4 +1,8 @@
-import { findClosestLocation, performMapping } from "./day05"
+import {
+  findClosestLocation,
+  performMapping,
+  performMappingForRange,
+} from "./day05"
 
 describe("day 5", () => {
   it("finds the closest location for the exapmle", () => {
@@ -49,6 +53,29 @@ humidity-to-location map:
 
     expect(seeds.map((seed) => performMapping(seed, mapping))).toEqual([
       81, 14, 57, 13,
+    ])
+  })
+
+  it("maps seed ranges with no splits", () => {
+    const mapping = [
+      { source: 50, dest: 98, range: 2 },
+      { source: 52, dest: 50, range: 48 },
+    ]
+
+    expect(performMappingForRange(79, 14, mapping)).toEqual([
+      { from: 81, length: 14 },
+    ])
+  })
+
+  it("maps seed ranges with a single split", () => {
+    const mapping = [
+      { source: 50, dest: 98, range: 2 },
+      { source: 52, dest: 50, range: 48 },
+    ]
+
+    expect(performMappingForRange(97, 2, mapping)).toEqual([
+      { from: 99, length: 1 },
+      { from: 50, length: 1 },
     ])
   })
 })

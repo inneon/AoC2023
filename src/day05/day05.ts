@@ -88,3 +88,37 @@ export const performMapping = (from: number, mapping: Mapping[]) => {
 
   return relevantMapping.source + offset
 }
+
+export const performMappingForRange = (
+  from: number,
+  length: number,
+  mapping: Mapping[],
+  depth: number = 0,
+): { from: number; length: number }[] => {
+  if (length === 0) {
+    return []
+  }
+  if (depth > 5) return []
+
+  const relevantMappings = mapping.filter(
+    (m) => from < m.dest + m.range && from + length >= m.dest,
+  )
+  if (relevantMappings.length === 0) {
+    return [{ from, length }]
+  }
+
+  const firstMapping = relevantMappings.sort((m1, m2) => m1.dest - m2.dest)[0]
+
+  const offset = from - firstMapping.dest
+  const nextFrom = firstMapping.source + offset
+  const run = nextFrom - firstMapping.dest - firstMapping.range
+  const nextLength = Math.max(0, length - run)
+  console.log({ from, length, firstMapping, offset, nextFrom, run, nextLength })
+  return [
+    {
+      from: nextFrom,
+      length: run,
+    },
+    ...performMappingForRange(from + run, nextLength, mapping, depth + 1),
+  ]
+}
