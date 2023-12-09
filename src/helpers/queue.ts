@@ -2,7 +2,7 @@ export class Queue<T> {
   private readonly _list: T[] = []
   constructor(initial?: T[]) {
     if (initial) {
-      this._list = initial
+      this._list = initial.reverse()
     }
   }
 

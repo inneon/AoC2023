@@ -10,6 +10,10 @@ import {
 import { findClosestLocation } from "./day05/day05"
 import { getRealWinValue, getWinValues } from "./day06/day06"
 import { getTotalWinnings, getTotalWinningsWithJokers } from "./day07/day07"
+import {
+  getMultiStepsForDirections,
+  getStepsForDirections,
+} from "./day08/day08"
 
 dotenv.config()
 
@@ -36,6 +40,8 @@ const run = async () => {
   console.log("day 07")
   console.log(await runFunctionWithInput("7", getTotalWinnings))
   console.log(await runFunctionWithInput("7", getTotalWinningsWithJokers))
+  console.log("day 08")
+  console.log(await runFunctionWithInput("8", getStepsForDirections))
 }
 
 run()
