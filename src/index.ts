@@ -14,6 +14,7 @@ import {
   getMultiStepsForDirections,
   getStepsForDirections,
 } from "./day08/day08"
+import { getGalaticDistance, getSimpleDistance } from "./day11/day11"
 
 dotenv.config()
 
@@ -42,6 +43,10 @@ const run = async () => {
   console.log(await runFunctionWithInput("7", getTotalWinningsWithJokers))
   console.log("day 08")
   console.log(await runFunctionWithInput("8", getStepsForDirections))
+
+  console.log("day 11")
+  console.log(await runFunctionWithInput("11", getSimpleDistance))
+  console.log(await runFunctionWithInput("11", getGalaticDistance))
 }
 
 run()
